@@ -1,5 +1,8 @@
 # ZeroDayGym Kali linux dotfiles
 
+<img width="1910" height="1079" alt="image" src="https://github.com/user-attachments/assets/bfedf358-4d49-4d39-a1e2-91954710ca39" />
+<img width="1915" height="1079" alt="image" src="https://github.com/user-attachments/assets/3226d84d-d74f-4d88-8b56-1c808690603d" />
+
 *The README file was generated using the help of a GitHub Copilot AI* 
 
 A custom i3-gaps desktop environment setup for Kali Linux with polybar, custom scripts, and themed configurations.
