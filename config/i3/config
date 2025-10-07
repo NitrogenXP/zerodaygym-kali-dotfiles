@@ -12,13 +12,13 @@ floating_modifier $mod
 exec ~/.config/polybar/launch.sh
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec gnome-terminal
 
 #shutdown
-bindsym $mod+Escape exec shutdown -h now
+bindsym $mod+Escape exec --no-startup-id systemctl reboot, mode "default"   
 
 #start a browser
-bindsym $mod+Shift+h exec firefox
+bindsym $mod+Shift+h exec ~/Downloads/firefox/firefox
 for_window [class="Firefox"] move to workspace 2
 
 #lock desktop
@@ -182,3 +182,10 @@ bindsym $mod+Ctrl+Shift+Left resize grow width 10 px or 10 ppt
 
 # screenshot
 bindsym $mod+P exec flameshot gui
+exec --no-startup-id feh --randomize --bg-scale ~/.wallpaper
+bindsym $mod+Shift+p exec --no-startup-id feh --randomize --bg-scale ~/.wallpaper
+exec --no-startup-id vmware-user-suid-wrapper
+exec --no-startup-id copyq
+bindsym Mod4+v exec copyq show
+for_window [class="CopyQ"] floating enable
+for_window [class="copyq"] floating enable

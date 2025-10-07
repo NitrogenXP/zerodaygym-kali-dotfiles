@@ -5,8 +5,10 @@
 apt update
 apt-get install -y arandr flameshot arc-theme feh i3blocks i3status i3 i3-wm lxappearance python3-pip rofi unclutter cargo compton papirus-icon-theme imagemagick
 apt-get install -y libxcb-shape0-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev xcb libxcb1-dev libxcb-icccm4-dev libyajl-dev libev-dev libxcb-xkb-dev libxcb-cursor-dev libxkbcommon-dev libxcb-xinerama0-dev libxkbcommon-x11-dev libstartup-notification0-dev libxcb-randr0-dev libxcb-xrm0 libxcb-xrm-dev autoconf meson
-apt-get install -y libxcb-render-util0-dev libxcb-shape0-dev libxcb-xfixes0-dev terminator mpv wget zsh polybar net-tools kitty
+apt-get install -y libxcb-render-util0-dev libxcb-shape0-dev libxcb-xfixes0-dev terminator mpv wget zsh polybar net-tools kitty tmux xclip
+apt install -y gnome-terminal copyq
 
+dconf load /org/gnome/terminal/ < ./config/gnome_terminal_settings_backup.txt
 mkdir -p ~/.local/share/fonts/
 
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Iosevka.zip
@@ -16,6 +18,14 @@ unzip Iosevka.zip -d ~/.local/share/fonts/
 unzip RobotoMono.zip -d ~/.local/share/fonts/
 
 fc-cache -fv
+cp ./config/.bashrc ~/.bashrc2
+cp ./config/.tmux.conf ~/.tmux.conf
+
+# Install TPM (Tmux Plugin Manager)
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Install tmux-themepack
+git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack
 
 wget https://github.com/barnumbirr/alacritty-debian/releases/download/v0.10.0-rc4-1/alacritty_0.10.0-rc4-1_amd64_bullseye.deb
 sudo dpkg -i alacritty_0.10.0-rc4-1_amd64_bullseye.deb
@@ -41,6 +51,9 @@ mkdir -p ~/.config/rofi
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/polybar
 mkdir -p ~/.config/terminator
+mkdir -p ~/.config/nvim
+
+cp -r config/nvim ~/.config/nvim
 cp config/kitty ~/.config/kitty
 cp config/terminator/config ~/.config/terminator/
 cp config/polybar/* ~/.config/polybar/
@@ -61,5 +74,3 @@ wget https://raw.githubusercontent.com/undiabler/nord-rofi-theme/master/nord.ras
 mv nord.rasi /usr/share/rofi/themes/
 #echo "Done! Grab some wallpaper and run pywal -i filename to set your color scheme. To have the wallpaper set on every boot edit ~.fehbg"
 #echo "After reboot: Select i3 on login, run lxappearance and select arc-dark"
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
